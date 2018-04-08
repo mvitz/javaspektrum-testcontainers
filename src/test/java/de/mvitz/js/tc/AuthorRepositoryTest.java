@@ -2,7 +2,7 @@ package de.mvitz.js.tc;
 
 import org.junit.ClassRule;
 import org.junit.Test;
-import org.testcontainers.containers.GenericContainer;
+import org.testcontainers.containers.PostgreSQLContainer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,18 +11,13 @@ import java.sql.SQLException;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.testcontainers.containers.wait.strategy.Wait.forLogMessage;
 
 public class AuthorRepositoryTest {
 
-    static String WAIT_PATTERN =
-            ".*database system is ready to accept connections.*\\s";
-
     @ClassRule
-    public static GenericContainer postgres =
-            new GenericContainer("postgres:latest")
-                    .withEnv("POSTGRES_PASSWORD", "mysecretpassword")
-                    .waitingFor(forLogMessage(WAIT_PATTERN, 2));
+    public static PostgreSQLContainer postgres =
+            new PostgreSQLContainer()
+                    .withPassword("mysecretpassword");
 
     @Test
     public void save_should_set_id() throws Exception {
@@ -57,11 +52,9 @@ public class AuthorRepositoryTest {
     }
 
     private Connection create() throws Exception {
-        String host = postgres.getContainerIpAddress();
-        int port = postgres.getMappedPort(5432);
-        String url = "jdbc:postgresql://" + host + ":" + port + "/postgres";
-        String user = "postgres";
-        String password = "mysecretpassword";
+        String url = postgres.getJdbcUrl();
+        String user = postgres.getUsername();
+        String password = postgres.getPassword();
         return DriverManager.getConnection(url, user, password);
     }
 
@@ -79,4 +72,3 @@ public class AuthorRepositoryTest {
         void executeWith(Connection connection) throws Exception;
     }
 }
-
