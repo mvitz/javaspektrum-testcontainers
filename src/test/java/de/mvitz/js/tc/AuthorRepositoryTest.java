@@ -1,6 +1,8 @@
 package de.mvitz.js.tc;
 
+import org.junit.ClassRule;
 import org.junit.Test;
+import org.testcontainers.containers.GenericContainer;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,6 +13,11 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 
 public class AuthorRepositoryTest {
+
+    @ClassRule
+    public static GenericContainer postgres =
+            new GenericContainer("postgres:latest")
+                    .withEnv("POSTGRES_PASSWORD", "mysecretpassword");
 
     @Test
     public void save_should_set_id() throws Exception {
@@ -45,7 +52,9 @@ public class AuthorRepositoryTest {
     }
 
     private Connection create() throws Exception {
-        String url = "jdbc:postgresql://192.168.99.100:5432/postgres";
+        String host = postgres.getContainerIpAddress();
+        int port = postgres.getMappedPort(5432);
+        String url = "jdbc:postgresql://" + host + ":" + port + "/postgres";
         String user = "postgres";
         String password = "mysecretpassword";
         return DriverManager.getConnection(url, user, password);
