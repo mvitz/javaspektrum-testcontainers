@@ -2,16 +2,16 @@
 
 **Testcontainers Example**
 
-These examples were written for Kevin's and my german [JavaSPEKTRUM](http://www.javaspektrum.de/)
-article "Der Praktiker: Einsatz von Containern zum Testen - Testcontainers in JUnit­Tests
-verwenden".
+These examples were written for [Kevin](https://github.com/kiview)'s and my german
+[JavaSPEKTRUM](http://www.javaspektrum.de/) article
+"Der Praktiker: Einsatz von Containern zum Testen - Testcontainers in JUnit Tests verwenden".
 
 
 ## License
 
 The MIT License (MIT)
 
-Copyright (c) 2017 Kevin Wittek, Michael Vitz
+Copyright (c) 2018 Kevin Wittek, Michael Vitz
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of
 this software and associated documentation files (the "Software"), to deal in
