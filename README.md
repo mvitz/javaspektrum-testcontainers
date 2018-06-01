@@ -6,6 +6,11 @@ These examples were written for [Kevin](https://github.com/kiview)'s and my germ
 [JavaSPEKTRUM](http://www.javaspektrum.de/) article
 "Der Praktiker: Einsatz von Containern zum Testen - Testcontainers in JUnit Tests verwenden".
 
+You can read it online
+[here](https://www.innoq.com/de/articles/2018/05/testcontainers-junit/)
+or download as PDF
+[here](http://www.sigs.de/publications/download/Artikel/vitz_JS_03_18_ijsa.pdf).
+
 
 ## License
 
