@@ -37,7 +37,7 @@ public class SeleniumTest {
                 .toLowerCase().startsWith("testcontainers")
         );
 
-        assertEquals("Testcontainers - Google-Suche", driver.getTitle());
+        assertEquals("Testcontainers - Google Suche", driver.getTitle());
         driver.quit();
     }
 }
