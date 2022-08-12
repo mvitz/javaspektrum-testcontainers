@@ -15,8 +15,8 @@ import static org.junit.Assert.assertEquals;
 public class AuthorRepositoryTest {
 
     @ClassRule
-    public static PostgreSQLContainer postgres =
-            new PostgreSQLContainer()
+    public static PostgreSQLContainer<?> postgres =
+            new PostgreSQLContainer<>("postgres:9.6.12")
                     .withPassword("mysecretpassword");
 
     @Test
